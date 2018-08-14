@@ -123,8 +123,7 @@ async function insert_task(request) {
 }
 
 async function get_tasks() {
-	var task = await db.class.get('Task')
-	var tasks = await task.list()
+	var tasks = await db.query("Select From Task Order by id asc")
 	for (var i = 0; i < tasks.length; i++) {
 		var parent_ids = tasks[i]["parent_ids"];
 		var parents = await db.query("SELECT FROM Task Where id in :parent_ids", {params:{
