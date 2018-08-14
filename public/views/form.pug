@@ -1,0 +1,10 @@
+- var task_exist = typeof task != 'undefined';
+- var action = task_exist ? '/update' : '/store';
+form(action=action method="post")
+	if task_exist
+		input(type="hidden" name="cluster" value=task['@rid'].cluster)
+		input(type="hidden" name="position" value=task['@rid'].position)
+	div.form-group
+		label(for="name")
+		input.form-control(type="text" name="name" placeholder="Name" value=task_exist ? task.name : "")
+	button.btn.btn-primary(type="submit") Submit

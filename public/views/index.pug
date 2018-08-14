@@ -1,0 +1,19 @@
+extends layout.pug
+block content
+	div.container
+		div.row
+			div.col-md-12.mt-3
+				a.btn.btn-info(href="/create") Create
+				table.table
+					thead
+						tr
+							th Name
+							th Action
+					tbody
+						each task in tasks
+							tr
+								td= task.name
+								td
+									div.btn-group(role="group")
+										a.btn.btn-warning(href="/edit/"+task['@rid'].cluster+"/"+task['@rid'].position) Edit
+										a.btn.btn-danger(href="/delete/"+task['@rid'].cluster+"/"+task['@rid'].position) Delete
