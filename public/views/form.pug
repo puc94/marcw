@@ -12,10 +12,12 @@ form(action=action method="post")
 		select.select2.form-control(name="parent_ids" multiple)
 			option(default value="")
 			each item in tasks
-				if task.id != item.id
-					if task_exist && task.parent_ids.indexOf(item.id.toString()) > -1
+				if task_exist && task.id != item.id
+					if task.parent_ids.indexOf(item.id.toString()) > -1
 						option(value=item.id selected)= item.todo
 					else
 						option(value=item.id)= item.todo
+				else
+					option(value=item.id)= item.todo
 	button.btn.btn-primary(type="submit") Submit
 	a.btn(href="/") Back
