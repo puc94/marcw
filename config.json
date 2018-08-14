@@ -1,0 +1,13 @@
+{
+	"server": {
+		"host": "mawercer.de",
+		"port": 2424,
+		"username": "root",
+		"password": "root"
+	},
+	"db": {
+		"name": "jindb",
+		"username": "root",
+		"password": "root"
+	}
+}
