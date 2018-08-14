@@ -4,15 +4,22 @@ block content
 		div.row
 			div.col-md-12.mt-3
 				a.btn.btn-info(href="/create") Create
-				table.table
+				table.table.mt-3
 					thead
 						tr
-							th Name
+							th Todo
+							th Parent
 							th Action
 					tbody
 						each task in tasks
 							tr
-								td= task.name
+								td= task.todo
+								td
+									each parent, key in task.parents
+										if key == task.parents.length - 1
+											= parent.todo
+										else
+											= parent.todo + ", "
 								td
 									div.btn-group(role="group")
 										a.btn.btn-warning(href="/edit/"+task['@rid'].cluster+"/"+task['@rid'].position) Edit

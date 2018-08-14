@@ -41,7 +41,11 @@ app.get('/', (req, res) => {
 
 // Create page
 app.get('/create', (req, res) => {
-	res.render('create');
+	Promise.all([get_tasks()])
+	.then(function(response) {
+		res.render('create', {tasks: response[0]})
+	})
+	.catch(function(e){ console.log(e); });
 })
 
 // Store task
@@ -57,7 +61,11 @@ app.post('/store', (req, res) => {
 app.get('/edit/:cluster/:position', (req, res) => {
 	db.record.get(`#${req.params.cluster}:${req.params.position}`)
 	.then((record) => {
-		res.render('edit', {task: record});
+		Promise.all([get_tasks()])
+		.then(function(response) {
+			res.render('edit', {task: record, tasks: response[0]})
+		})
+		.catch(function(e){ console.log(e); });
 	})
 	.catch((e) => {
 		console.log(e)
@@ -68,15 +76,24 @@ app.get('/edit/:cluster/:position', (req, res) => {
 app.post('/update', (req, res) => {
 	db.record.get(`#${req.body.cluster}:${req.body.position}`)
 	.then((record) => {
-		record.name = req.body.name
+		record.todo = req.body.todo
+		var parent_ids = req.body.parent_ids;
+		if (typeof parent_ids == "undefined") {
+			parent_ids = []
+		}
+		else if (typeof parent_ids == "string") {
+			parent_ids = [parent_ids]
+		}
+		record.parent_ids = parent_ids
+
 		db.record.update(record)
 			.then(function() {
 				res.redirect('/')
 			})
-		// res.render('edit', {task: record});
 	})
 })
 
+// Delete task
 app.get('/delete/:cluster/:position', (req, res) => {
 	db.record.delete(`#${req.params.cluster}:${req.params.position}`)
 	.then((record) => {
@@ -89,14 +106,34 @@ app.get('/delete/:cluster/:position', (req, res) => {
 
 async function insert_task(request) {
 	var task = await db.class.get('Task')
-	return task.create({
-		name: request.name
-	})
+	sequence = await db.query("Select sequence('idseq').next() as id")
+	var parent_ids = request.parent_ids;
+	if (typeof parent_ids == "undefined") {
+		parent_ids = []
+	}
+	else if (typeof parent_ids == "string") {
+		parent_ids = [parent_ids]
+	}
+
+	var task_obj = await task.create({
+		id: sequence[0].id,
+		todo: request.todo,
+		parent_ids: parent_ids
+	});
 }
 
 async function get_tasks() {
 	var task = await db.class.get('Task')
-	return await task.list()
+	var tasks = await task.list()
+	for (var i = 0; i < tasks.length; i++) {
+		var parent_ids = tasks[i]["parent_ids"];
+		var parents = await db.query("SELECT FROM Task Where id in :parent_ids", {params:{
+            parent_ids: parent_ids
+           }});
+		tasks[i]["parents"] = parents
+	}
+
+	return tasks;
 }
 
 app.set('port', process.env.PORT || 7000)
