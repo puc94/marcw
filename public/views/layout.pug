@@ -1,15 +1,16 @@
 html
 	head
 		title My Site - #{title}
+		link(rel="stylesheet" href="/assets/css/bootstrap.min.css")
+		link(rel="stylesheet" href="/assets/css/select2.css")
+		link(rel="stylesheet" href="/assets/css/select2-bootstrap.css")
 		block styles
-			link(rel="stylesheet" href="/assets/css/bootstrap.min.css")
-			link(rel="stylesheet" href="/assets/css/select2.css")
-			link(rel="stylesheet" href="/assets/css/select2-bootstrap.css")
 	body
 		block content
+		script(src='/assets/js/jquery.min.js')
+		script(src='/assets/js/popper.min.js')
+		script(src='/assets/js/bootstrap.min.js')
+		script(src='/assets/js/select2.min.js')
+		script(src='/assets/js/go.js')
+		script(src='/assets/js/script.js')
 		block scripts
-			script(src='/assets/js/jquery.min.js')
-			script(src='/assets/js/popper.min.js')
-			script(src='/assets/js/bootstrap.min.js')
-			script(src='/assets/js/select2.min.js')
-			script(src='/assets/js/script.js')
