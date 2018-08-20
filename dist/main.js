@@ -91,19 +91,24 @@ var AppComponent = /** @class */ (function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppModule", function() { return AppModule; });
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/fesm5/http.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
-/* harmony import */ var ng2_select2__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ng2-select2 */ "./node_modules/ng2-select2/ng2-select2.js");
-/* harmony import */ var ng2_select2__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(ng2_select2__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _data_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./data.service */ "./src/app/data.service.ts");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _parents_todo_pipe__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./parents-todo.pipe */ "./src/app/parents-todo.pipe.ts");
-/* harmony import */ var _task_task_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./task/task.component */ "./src/app/task/task.component.ts");
-/* harmony import */ var _task_create_task_create_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./task-create/task-create.component */ "./src/app/task-create/task-create.component.ts");
-/* harmony import */ var _task_edit_task_edit_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./task-edit/task-edit.component */ "./src/app/task-edit/task-edit.component.ts");
+/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/fesm5/http.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var ng2_select2__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ng2-select2 */ "./node_modules/ng2-select2/ng2-select2.js");
+/* harmony import */ var ng2_select2__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(ng2_select2__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _swimlane_ngx_charts__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @swimlane/ngx-charts */ "./node_modules/@swimlane/ngx-charts/release/index.js");
+/* harmony import */ var _swimlane_ngx_charts__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_swimlane_ngx_charts__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _swimlane_ngx_graph__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @swimlane/ngx-graph */ "./node_modules/@swimlane/ngx-graph/release/index.js");
+/* harmony import */ var _swimlane_ngx_graph__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_swimlane_ngx_graph__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _data_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./data.service */ "./src/app/data.service.ts");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _parents_todo_pipe__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./parents-todo.pipe */ "./src/app/parents-todo.pipe.ts");
+/* harmony import */ var _task_task_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./task/task.component */ "./src/app/task/task.component.ts");
+/* harmony import */ var _task_create_task_create_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./task-create/task-create.component */ "./src/app/task-create/task-create.component.ts");
+/* harmony import */ var _task_edit_task_edit_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./task-edit/task-edit.component */ "./src/app/task-edit/task-edit.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -123,36 +128,42 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
+
+
 var appRoutes = [
     { path: '', redirectTo: 'tasks', pathMatch: 'full' },
-    { path: 'tasks', component: _task_task_component__WEBPACK_IMPORTED_MODULE_10__["TaskComponent"] },
-    { path: 'task-create', component: _task_create_task_create_component__WEBPACK_IMPORTED_MODULE_11__["TaskCreateComponent"] },
-    { path: 'task-edit/:id', component: _task_edit_task_edit_component__WEBPACK_IMPORTED_MODULE_12__["TaskEditComponent"] }
+    { path: 'tasks', component: _task_task_component__WEBPACK_IMPORTED_MODULE_13__["TaskComponent"] },
+    { path: 'task-create', component: _task_create_task_create_component__WEBPACK_IMPORTED_MODULE_14__["TaskCreateComponent"] },
+    { path: 'task-edit/:id', component: _task_edit_task_edit_component__WEBPACK_IMPORTED_MODULE_15__["TaskEditComponent"] }
 ];
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"],
-                _parents_todo_pipe__WEBPACK_IMPORTED_MODULE_9__["ParentsTodoPipe"],
-                _task_task_component__WEBPACK_IMPORTED_MODULE_10__["TaskComponent"],
-                _task_create_task_create_component__WEBPACK_IMPORTED_MODULE_11__["TaskCreateComponent"],
-                _task_edit_task_edit_component__WEBPACK_IMPORTED_MODULE_12__["TaskEditComponent"]
+                _app_component__WEBPACK_IMPORTED_MODULE_11__["AppComponent"],
+                _parents_todo_pipe__WEBPACK_IMPORTED_MODULE_12__["ParentsTodoPipe"],
+                _task_task_component__WEBPACK_IMPORTED_MODULE_13__["TaskComponent"],
+                _task_create_task_create_component__WEBPACK_IMPORTED_MODULE_14__["TaskCreateComponent"],
+                _task_edit_task_edit_component__WEBPACK_IMPORTED_MODULE_15__["TaskEditComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
-                _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"],
-                _angular_http__WEBPACK_IMPORTED_MODULE_3__["HttpModule"],
-                ng2_select2__WEBPACK_IMPORTED_MODULE_6__["Select2Module"],
-                _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forRoot(appRoutes)
+                _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_1__["BrowserAnimationsModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
+                _angular_http__WEBPACK_IMPORTED_MODULE_4__["HttpModule"],
+                ng2_select2__WEBPACK_IMPORTED_MODULE_7__["Select2Module"],
+                _swimlane_ngx_charts__WEBPACK_IMPORTED_MODULE_8__["NgxChartsModule"],
+                _swimlane_ngx_graph__WEBPACK_IMPORTED_MODULE_9__["NgxGraphModule"],
+                _angular_router__WEBPACK_IMPORTED_MODULE_5__["RouterModule"].forRoot(appRoutes)
             ],
             providers: [
-                _data_service__WEBPACK_IMPORTED_MODULE_7__["DataService"],
-                { provide: _angular_common__WEBPACK_IMPORTED_MODULE_5__["LocationStrategy"], useClass: _angular_common__WEBPACK_IMPORTED_MODULE_5__["HashLocationStrategy"] }
+                _data_service__WEBPACK_IMPORTED_MODULE_10__["DataService"],
+                { provide: _angular_common__WEBPACK_IMPORTED_MODULE_6__["LocationStrategy"], useClass: _angular_common__WEBPACK_IMPORTED_MODULE_6__["HashLocationStrategy"] }
             ],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"]]
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_11__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
@@ -526,7 +537,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n\t<div class=\"row\">\n\t\t<div class=\"col-md-12 mt-3\">\n\t\t\t<a [routerLink]=\"['/task-create']\" class=\"btn btn-default btn-lg\">\n\t\t\t\tCreate\n\t\t\t</a>\n\t\t\t<table class=\"table mt-3\">\n\t\t\t\t<thead>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>Todo</th>\n\t\t\t\t\t\t<th>Parent</th>\n\t\t\t\t\t\t<th>Action</th>\n\t\t\t\t\t</tr>\n\t\t\t\t</thead>\n\t\t\t\t<tbody>\n\t\t\t\t\t<tr *ngFor=\"let task of tasks\">\n\t\t\t\t\t\t<td>{{ task.todo }}</td>\n\t\t\t\t\t\t<td>{{ task.parents | parentsTodo }}</td>\n\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t<a [routerLink]=\"['/task-edit', task.id]\" class=\"btn btn-success\">EDIT</a>\n\t\t\t\t\t\t\t<button class=\"btn btn-danger\" type=\"button\" (click)=\"deleteTask(task.id)\">DELETE</button>\n\t\t\t\t\t\t</td>\n\t\t\t\t\t</tr>\n\t\t\t\t</tbody>\n\t\t\t</table>\n\t\t</div>\n\t</div>\n</div>"
+module.exports = "<div class=\"container\">\n\t<div class=\"row\">\n\t\t<div class=\"col-md-12 mt-3\">\n\t\t\t<a [routerLink]=\"['/task-create']\" class=\"btn btn-default btn-lg\">\n\t\t\t\tCreate\n\t\t\t</a>\n\t\t\t<table class=\"table mt-3\">\n\t\t\t\t<thead>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>Todo</th>\n\t\t\t\t\t\t<th>Parent</th>\n\t\t\t\t\t\t<th>Action</th>\n\t\t\t\t\t</tr>\n\t\t\t\t</thead>\n\t\t\t\t<tbody>\n\t\t\t\t\t<tr *ngFor=\"let task of tasks\">\n\t\t\t\t\t\t<td>{{ task.todo }}</td>\n\t\t\t\t\t\t<td>{{ task.parents | parentsTodo }}</td>\n\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t<a [routerLink]=\"['/task-edit', task.id]\" class=\"btn btn-success\">EDIT</a>\n\t\t\t\t\t\t\t<button class=\"btn btn-danger\" type=\"button\" (click)=\"deleteTask(task.id)\">DELETE</button>\n\t\t\t\t\t\t</td>\n\t\t\t\t\t</tr>\n\t\t\t\t</tbody>\n\t\t\t</table>\n\t\t\t<ngx-graph\n\t\t\t  class=\"chart-container\"\n\t\t\t  [links]=\"graph.links\"\n\t\t\t  [nodes]=\"graph.nodes\"\n\t\t\t  [curve]=\"curve\">\n\n\t\t\t  <ng-template #defsTemplate>\n\t\t\t    <svg:marker id=\"arrow\" viewBox=\"0 -5 10 10\" refX=\"8\" refY=\"0\" markerWidth=\"4\" markerHeight=\"4\" orient=\"auto\">\n\t\t\t      <svg:path d=\"M0,-5L10,0L0,5\" class=\"arrow-head\" />\n\t\t\t    </svg:marker>\n\t\t\t  </ng-template>\n\n\t\t\t  <ng-template #nodeTemplate let-node>\n\t\t\t    <svg:g class=\"node\"\n\t\t\t      ngx-tooltip\n\t\t\t      [tooltipPlacement]=\"'top'\"\n\t\t\t      [tooltipType]=\"'tooltip'\"\n\t\t\t      [tooltipTitle]=\"node.label\">\n\t\t\t      <svg:rect [attr.width]=\"node.width\" [attr.height]=\"node.height\" [attr.fill]=\"node.options.color\" />\n\t\t\t      <svg:text alignment-baseline=\"central\" [attr.x]=\"10\" [attr.y]=\"node.height / 2\">{{node.label}}</svg:text>\n\t\t\t    </svg:g>\n\t\t\t  </ng-template>\n\n\t\t\t  <ng-template #linkTemplate let-link>\n\t\t\t    <svg:g class=\"edge\">\n\t\t\t      <svg:path\n\t\t\t        class=\"line\"\n\t\t\t        stroke-width=\"2\"\n\t\t\t        marker-end=\"url(#arrow)\" >\n\t\t\t      </svg:path>\n\t\t\t    </svg:g>\n\t\t\t  </ng-template>\n\n\t\t\t</ngx-graph>\n\t\t</div>\n\t</div>\n</div>"
 
 /***/ }),
 
@@ -541,7 +552,8 @@ module.exports = "<div class=\"container\">\n\t<div class=\"row\">\n\t\t<div cla
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TaskComponent", function() { return TaskComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _data_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../data.service */ "./src/app/data.service.ts");
+/* harmony import */ var d3_shape__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! d3-shape */ "./node_modules/d3-shape/index.js");
+/* harmony import */ var _data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../data.service */ "./src/app/data.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -553,12 +565,25 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+
 var TaskComponent = /** @class */ (function () {
     function TaskComponent(_dataService) {
         var _this = this;
         this._dataService = _dataService;
+        this.curve = d3_shape__WEBPACK_IMPORTED_MODULE_1__["curveLinear"];
+        this.graph = { nodes: [], links: [] };
         this._dataService.getTasks()
-            .subscribe(function (res) { return _this.tasks = res; });
+            .subscribe(function (res) {
+            _this.tasks = res;
+            _this.tasks.forEach(function (task) {
+                _this.graph.nodes.push({ id: task.id.toString(), label: task.todo });
+                task.parents.forEach(function (parent) {
+                    _this.graph.links.push({ source: parent.id.toString(), target: task.id.toString() });
+                });
+            });
+            _this.graph.nodes = _this.graph.nodes.slice();
+            _this.graph.links = _this.graph.links.slice();
+        });
     }
     TaskComponent.prototype.ngOnInit = function () {
     };
@@ -580,7 +605,7 @@ var TaskComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./task.component.html */ "./src/app/task/task.component.html"),
             styles: [__webpack_require__(/*! ./task.component.css */ "./src/app/task/task.component.css")]
         }),
-        __metadata("design:paramtypes", [_data_service__WEBPACK_IMPORTED_MODULE_1__["DataService"]])
+        __metadata("design:paramtypes", [_data_service__WEBPACK_IMPORTED_MODULE_2__["DataService"]])
     ], TaskComponent);
     return TaskComponent;
 }());
@@ -651,7 +676,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\work\marcw1\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! D:\work\marcw\src\main.ts */"./src/main.ts");
 
 
 /***/ })

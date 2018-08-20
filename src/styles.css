@@ -5,3 +5,7 @@
 .select2-container {
 	width: 100% !important;
 }
+
+.ngx-charts {
+	border: 1px solid;
+}
