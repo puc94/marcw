@@ -2,6 +2,9 @@ const express   = require('express');
 const router    = express.Router();
 const OrientDB  = require('orientjs');
 const async     = require('async');
+const bcrypt    = require('bcrypt');
+const jwt       = require('jsonwebtoken');
+const saltRounds = 10;
 
 // Connect
 var server = OrientDB({
@@ -31,6 +34,57 @@ let response = {
     data: [],
     message: null
 };
+
+// Auth
+router.post('/users/auth', (req, res) => {
+    const data = req.body
+    db.query(`SELECT FROM User WHERE email="${data.email}"`)
+    .then((users) => {
+        if (users.length == 0) {
+            sendError("The email or password don't match", res);
+        }
+        else {
+            var user = users[0];
+            bcrypt.compare(data.password, user.password, function(err, flag) {
+                if (flag) {
+                    var token = jwt.sign({ userID: user.id }, 'marcw-secret', {expiresIn : '5h'});
+                    user.token = token;
+                    response.data = user;
+                    res.json(response);
+                }
+                else {
+                    sendError("The email or password don't match", res);
+                }
+            })
+        }
+    })
+})
+
+// Register
+router.post('/users/register', (req, res) => {
+    const data = req.body;
+
+    bcrypt.genSalt(saltRounds, function(err, salt) {
+        bcrypt.hash(data.password, salt, function(err, hash) {
+            db.query("Select sequence('userseq').next() as id")
+            .then((sequence) => {
+                db.insert().into('User').set({
+                    id: sequence[0].id,
+                    firstName: data.firstName,
+                    lastName: data.lastName,
+                    email: data.email,
+                    password: hash
+                }).one().then((user) => {
+                    response.data = user;
+                    res.json(response);
+                })
+                .catch((err) => {
+                    sendError(err, res);
+                })
+            })
+        })
+    })
+})
 
 // All tasks
 router.get('/all_tasks', (req, res) => {
