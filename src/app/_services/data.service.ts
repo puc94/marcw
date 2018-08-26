@@ -1,70 +1,41 @@
 import { Injectable } from '@angular/core';
 
-import { Http, Headers, RequestOptions } from '@angular/http';
-import 'rxjs/add/operator/map';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class DataService {
 
-  result:any;
-
-  constructor(private _http: Http) { }
+  constructor(private _http: HttpClient) { }
 
   getAllTasks() {
     return this._http.get('/api/all_tasks')
-      .map(result => this.result = result.json().data);
+      .pipe(map(res => res))
   }
 
   getTasks() {
     return this._http.get('/api/tasks')
-      .map(result => this.result = result.json().data);
+      .pipe(map(res => res))
   }
 
   getTask(id) {
-    return new Promise((resolve, reject) => {
-      this._http.get('/api/task/' + id)
-      .map(res => res.json())
-      .subscribe(res => {
-        resolve(res.data)
-      }, (err) => {
-        reject(err);
-      });
-    });
+    return this._http.get('/api/task/' + id)
+      .pipe(map(res => res)) 
   }
 
   createTask(data) {
-    return new Promise((resolve, reject) => {
-        this._http.post('/api/task', data)
-          .map(res => res.json())
-          .subscribe(res => {
-            resolve(res);
-          }, (err) => {
-            reject(err);
-          });
-    });
+    return this._http.post('/api/task', data)
+      .pipe(map(res => res))
   }
 
   updateTask(id, data) {
-    return new Promise((resolve, reject) => {
-        this._http.put('/api/task/'+id, data)
-          .map(res => res.json())
-          .subscribe(res => {
-            resolve(res);
-          }, (err) => {
-            reject(err);
-          });
-    });
+    return this._http.put('/api/task/'+id, data)
+      .pipe(map(res => res))
   }
 
   deleteTask(id) {
-  	return new Promise((resolve, reject) => {
-	  	this._http.delete('/api/task/' + id)
-	  		.subscribe(res => {
-	  			resolve(res)
-	  		}, (err) => {
-	  			reject(err);
-	  		})
-  	})
+    return this._http.delete('/api/task/' + id)
+      .pipe(map(res => res))
   }
 
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as shape from 'd3-shape';
-import { DataService } from '../../_services';
+import { DataService } from '../../../_services';
 
 @Component({
   selector: 'app-task',
@@ -19,7 +19,7 @@ export class TaskComponent implements OnInit {
 
     this._dataService.getTasks()
       .subscribe(res => {
-        this.tasks = res
+        this.tasks = res['data']
         this.tasks.forEach((task) => {
           this.graph.nodes.push({ id: task.id.toString(), label: task.todo });
           task.parents.forEach((parent) => {
@@ -35,7 +35,7 @@ export class TaskComponent implements OnInit {
   }
 
   deleteTask(id) {
-    this._dataService.deleteTask(id).then((result) => {
+    this._dataService.deleteTask(id).subscribe((result) => {
       this.tasks.forEach((task, index) => {
         if (task.id == id) {
           this.tasks.splice(index, 1);

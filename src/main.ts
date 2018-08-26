@@ -1,6 +1,3 @@
-require('popper.js/dist/popper.min.js');
-require('bootstrap/dist/js/bootstrap.min.js');
-
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 

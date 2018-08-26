@@ -7,7 +7,7 @@ import { environment } from '../../environments/environment';
 
 export const TOKEN_NAME: string = 'current_user';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class AuthenticationService {
 
 	constructor(private http: HttpClient) { }

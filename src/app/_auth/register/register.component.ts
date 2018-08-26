@@ -8,7 +8,7 @@ import { AlertService, UserService } from '../../_services';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.sass']
 })
 export class RegisterComponent implements OnInit {
 
@@ -48,7 +48,7 @@ export class RegisterComponent implements OnInit {
 			.subscribe(
 				data => {
 					this.alertService.success('Registration success', true);
-					this.router.navigate(['/login']);
+					this.router.navigate(['/auth/login']);
 				},
 				error => {
 					this.alertService.error(error);

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Select2OptionData } from 'ng2-select2';
-import { DataService } from '../../_services';
+import { DataService } from '../../../_services';
 import { Observable } from 'rxjs/Observable';
 
 @Component({
@@ -20,7 +20,7 @@ export class TaskCreateComponent implements OnInit {
 		this.task = {todo: "", parent_ids: []};
 		this._dataService.getAllTasks()
       		.subscribe(res => {
-      			this.tasks = res;
+      			this.tasks = res['data'];
       			this.tasks.forEach((task) => {
 					taskOptions.push({id: task.id, text: task.todo})
 				})
@@ -40,8 +40,8 @@ export class TaskCreateComponent implements OnInit {
 
 	createTask() {
 		this._dataService.createTask(this.task)
-		.then((res) => {
-			this.router.navigate(['/']);
+		.subscribe((res) => {
+			this.router.navigate(['/admin/tasks']);
 		}, (err) => {
 			console.log(err)
 		})

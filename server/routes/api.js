@@ -174,7 +174,8 @@ router.put('/task/:id', (req, res) => {
 router.delete('/task/:id', (req, res) => {
     db.delete().from("Task").where(`id = ${req.params.id}`).limit(1).scalar()
     .then((del) => {
-        res.end('Records Deleted: ' + del)
+        response.data = 'Records Deleted: ' + del;
+        res.json(response)
     })
 })
 

@@ -1,7 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
-const http = require('http');
 const expressJwt = require('express-jwt');
 const app = express();
 
@@ -15,8 +14,8 @@ app.use(bodyParser.urlencoded({ extended: false}));
 // Angular DIST output folder
 app.use(express.static(path.join(__dirname, 'dist')));
 
-// 
-// app.use(expressJwt({secret: 'marcw-secret'}).unless({path: ['/api/auth', '']}));
+// Check request header
+// app.use(expressJwt({secret: 'marcw-secret'}).unless({path: ['/api/auth', '/api/users/auth', '/api/users/register']}));
 
 // API location
 app.use('/api', api);
@@ -28,8 +27,6 @@ app.get('*', (req, res) => {
 
 //Set Port
 const port = process.env.PORT || '7000';
-app.set('port', port);
-
-const server = http.createServer(app);
-
-server.listen(port, () => console.log(`Running on port ${port}`));
+app.listen(port, () => {
+	console.log(`Running on port ${port}`)
+})

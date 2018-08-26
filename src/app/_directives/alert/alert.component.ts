@@ -6,7 +6,7 @@ import { AlertService } from '../../_services';
 @Component({
   selector: 'alert',
   templateUrl: './alert.component.html',
-  styleUrls: ['./alert.component.css']
+  styleUrls: ['./alert.component.sass']
 })
 export class AlertComponent implements OnInit {
 	private subscription: Subscription;

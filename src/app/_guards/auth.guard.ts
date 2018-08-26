@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 import { AuthenticationService } from '../_services';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class AuthGuard implements CanActivate {
 
 	constructor(private router: Router, private authService: AuthenticationService) { }
@@ -14,7 +14,7 @@ export class AuthGuard implements CanActivate {
 			return true;
 		}
 
-		this.router.navigate(['/login'], { queryParams: {
+		this.router.navigate(['/auth/login'], { queryParams: {
 			returnUrl: state.url
 		} });
 		return false;

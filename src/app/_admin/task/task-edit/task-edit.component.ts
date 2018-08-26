@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Select2OptionData } from 'ng2-select2';
-import { DataService } from '../../_services';
+import { DataService } from '../../../_services';
 import { Observable } from 'rxjs/Observable';
 
 @Component({
@@ -20,7 +20,7 @@ export class TaskEditComponent implements OnInit {
 		this.task = {id: "", todo: ""};
 		this._dataService.getAllTasks()
       		.subscribe(res => {
-      			this.tasks = res;
+      			this.tasks = res['data'];
       		});
 	}
 
@@ -34,8 +34,8 @@ export class TaskEditComponent implements OnInit {
 
 	getTaskDetail(id) {
 		var taskOptions = [];
-		this._dataService.getTask(id).then((res) => {
-			this.task = res;
+		this._dataService.getTask(id).subscribe((res) => {
+			this.task = res['data'];
 	    	this.tasks.forEach((task) => {
 				if (task.id != this.task.id)
 					taskOptions.push({id: task.id, text: task.todo})
@@ -51,8 +51,8 @@ export class TaskEditComponent implements OnInit {
 
 	updateTask(id) {
 		this._dataService.updateTask(id, this.task)
-		.then((res) => {
-			this.router.navigate(['/']);
+		.subscribe((res) => {
+			this.router.navigate(['/admin/tasks']);
 		}, (err) => {
 			console.log(err)
 		})
