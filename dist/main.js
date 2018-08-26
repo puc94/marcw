@@ -662,9 +662,6 @@ var routes = [
     },
     {
         path: '',
-        data: {
-            title: 'Home'
-        },
         children: [
             {
                 path: 'auth',
@@ -673,7 +670,10 @@ var routes = [
             {
                 path: 'admin',
                 loadChildren: './_admin/admin.module#AdminModule',
-                canActivate: [_guards__WEBPACK_IMPORTED_MODULE_2__["AuthGuard"]]
+                canActivate: [_guards__WEBPACK_IMPORTED_MODULE_2__["AuthGuard"]],
+                data: {
+                    breadcrumb: 'Admin'
+                },
             }
         ]
     }
@@ -754,7 +754,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\work\marcw-scss\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\VM-41\Documents\Works\marcw-scss\src\main.ts */"./src/main.ts");
 
 
 /***/ })

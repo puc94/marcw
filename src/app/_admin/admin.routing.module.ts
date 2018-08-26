@@ -2,24 +2,34 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 // Load Layout
-import { AdminLayoutComponent } from './components/admin-layout/admin-layout.component';
+import { AdminLayoutComponent } from './components';
+
+// Load Dashboard
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
 	{
 		path: '',
-		redirectTo: 'tasks',
+		redirectTo: 'dashboard',
 		pathMatch: 'full',
 	},
 	{
 		path: '',
 		component: AdminLayoutComponent,
-		data: {
-			title: 'Admin'
-		},
 		children: [
 			{
+				path: 'dashboard',
+				component: DashboardComponent,
+				data: {
+					breadcrumb: 'Dashboard'
+				}
+			},
+			{
 				path: 'tasks',
-				loadChildren: './task/task.module#TaskModule'
+				loadChildren: './task/task.module#TaskModule',
+				data: {
+					breadcrumb: 'Tasks'
+				},
 			}
 		]
 	}

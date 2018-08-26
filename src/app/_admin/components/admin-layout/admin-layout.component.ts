@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminLayoutService } from '../../../_services';
 
 @Component({
   selector: 'app-admin-layout',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminLayoutComponent implements OnInit {
 
-  constructor() { }
+	showSidebar: boolean
+	showSetting: boolean
 
-  ngOnInit() {
-  }
+	constructor(private _adminLayoutService: AdminLayoutService) {
+		this.showSidebar = true
+		this.showSetting = false
+		this._adminLayoutService.getToggleSidebar().subscribe(show => {
+			this.showSidebar = show
+		});
+		this._adminLayoutService.getToggleSetting().subscribe(show => {
+			this.showSetting = show
+		});
+	}
+
+	ngOnInit() {
+	}
 
 }

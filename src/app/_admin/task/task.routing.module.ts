@@ -6,9 +6,6 @@ import { TaskComponent, TaskCreateComponent, TaskEditComponent } from './task-co
 const routes: Routes = [
 	{
 		path: '',
-		data: {
-			title: 'Task'
-		},
 		children: [
 			{
 				path: '',
@@ -16,11 +13,17 @@ const routes: Routes = [
 			},
 			{
 				path: 'create',
-				component: TaskCreateComponent
+				component: TaskCreateComponent,
+				data: {
+					breadcrumb: 'Create'
+				}
 			},
 			{
 				path: 'edit/:id',
-				component: TaskEditComponent
+				component: TaskEditComponent,
+				data: {
+					breadcrumb: 'Edit'
+				}
 			}
 		]
 	}

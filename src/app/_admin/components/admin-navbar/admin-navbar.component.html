@@ -1,9 +1,19 @@
-<nav class="navbar navbar-light bg-light">
-	<a class="navbar-brand d-none d-md-block" href="#">Navbar</a>
+<nav class="navbar navbar-light">
+	<a class="navbar-brand d-none d-md-inline-flex" href="#">Navbar</a>
 	<button class="navbar-toggler border-0" (click)="toggleSidebar()" type="button" aria-expanded="false" aria-label="Toggle Sidebar">
 		<i class="fa fa-bars"></i>
 	</button>
-	<a class="navbar-brand d-block d-md-none" href="#">Navbar</a>
+	<a class="navbar-brand d-inline-flex d-md-none" href="#">Navbar</a>
+	<ul class="nav navbar-nav ml-auto">
+		<li class="nav-item drodown" dropdown placement="bottom right">
+			<a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" dropdownToggle (click)="false">
+				<img src="assets/img/avatar.jpg" class="rounded-circle" width="35">
+			</a>
+			<div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">
+				<a class="dropdown-item" href="#" (click)="logout()"><i class="fa fa-lock"></i> Logout</a>
+			</div>
+		</li>
+	</ul>
 	<button class="navbar-toggler border-0" (click)="toggleSetting()" type="button" aria-expanded="false" aria-label="Toggle Setting">
 		<i class="fa fa-bars"></i>
 	</button>

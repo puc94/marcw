@@ -19,9 +19,9 @@ export class TaskEditComponent implements OnInit {
 	constructor(private route: ActivatedRoute, private router: Router, private _dataService: DataService) {
 		this.task = {id: "", todo: ""};
 		this._dataService.getAllTasks()
-  		.subscribe(res => {
-  			this.tasks = res['data'];
-  		});
+		.subscribe(res => {
+			this.tasks = res['data'];
+		});
 	}
 
 	ngOnInit() {

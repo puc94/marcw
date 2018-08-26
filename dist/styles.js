@@ -89,7 +89,7 @@ module.exports = "/*!\n *  Font Awesome 4.7.0 by @davegandy - http://fontawesome
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/* You can add global styles to this file, and also import other style files */\n.select2-container {\n  width: 100% !important; }\n.ngx-charts {\n  border: 1px solid; }\n"
+module.exports = "/* You can add global styles to this file, and also import other style files */\nbody {\n  font-size: .875rem;\n  color: #23282c;\n  background-color: #e4e5e6; }\n.select2-container {\n  width: 100% !important; }\n.ngx-charts-outer {\n  width: auto !important;\n  height: 300px;\n  border: 1px solid;\n  overflow: hidden; }\n"
 
 /***/ }),
 
@@ -662,10 +662,10 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\work\marcw-scss\src\styles.sass */"./src/styles.sass");
-__webpack_require__(/*! D:\work\marcw-scss\node_modules\select2\dist\css\select2.min.css */"./node_modules/select2/dist/css/select2.min.css");
-__webpack_require__(/*! D:\work\marcw-scss\node_modules\bootstrap\dist\css\bootstrap.min.css */"./node_modules/bootstrap/dist/css/bootstrap.min.css");
-module.exports = __webpack_require__(/*! D:\work\marcw-scss\node_modules\font-awesome\css\font-awesome.css */"./node_modules/font-awesome/css/font-awesome.css");
+__webpack_require__(/*! C:\Users\VM-41\Documents\Works\marcw-scss\src\styles.sass */"./src/styles.sass");
+__webpack_require__(/*! C:\Users\VM-41\Documents\Works\marcw-scss\node_modules\select2\dist\css\select2.min.css */"./node_modules/select2/dist/css/select2.min.css");
+__webpack_require__(/*! C:\Users\VM-41\Documents\Works\marcw-scss\node_modules\bootstrap\dist\css\bootstrap.min.css */"./node_modules/bootstrap/dist/css/bootstrap.min.css");
+module.exports = __webpack_require__(/*! C:\Users\VM-41\Documents\Works\marcw-scss\node_modules\font-awesome\css\font-awesome.css */"./node_modules/font-awesome/css/font-awesome.css");
 
 
 /***/ })

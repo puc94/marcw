@@ -11,9 +11,6 @@ export const routes: Routes = [
   },
   {
     path: '',
-    data: {
-      title: 'Home'
-    },
     children: [
       {
         path: 'auth',
@@ -22,7 +19,10 @@ export const routes: Routes = [
       {
         path: 'admin',
         loadChildren: './_admin/admin.module#AdminModule',
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        data: {
+          breadcrumb: 'Admin'
+        },
       }
     ]
   }

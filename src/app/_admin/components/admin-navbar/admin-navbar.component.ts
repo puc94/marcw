@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminLayoutService } from '../../../_services';
+import { Router, ActivatedRoute } from '@angular/router';
+
+export const TOKEN_NAME: string = 'current_user';
 
 @Component({
   selector: 'app-admin-navbar',
@@ -11,7 +14,7 @@ export class AdminNavbarComponent implements OnInit {
 	showSidebar: boolean;
 	showSetting: boolean;
 
-	constructor(private _adminLayoutService: AdminLayoutService) {
+	constructor(private _adminLayoutService: AdminLayoutService, private router: Router) {
 		this.showSidebar = true;
 		this.showSetting = false;
 	}
@@ -27,5 +30,10 @@ export class AdminNavbarComponent implements OnInit {
 	toggleSetting() {
 		this.showSetting = !this.showSetting
 		this._adminLayoutService.setToggleSetting(this.showSetting)
+	}
+
+	logout() {
+		localStorage.removeItem(TOKEN_NAME);
+		this.router.navigate(['/']);
 	}
 }

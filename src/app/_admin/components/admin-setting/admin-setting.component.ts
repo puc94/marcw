@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AdminLayoutService } from '../../../_services';
 
 @Component({
   selector: 'app-admin-setting',
@@ -8,12 +7,7 @@ import { AdminLayoutService } from '../../../_services';
 })
 export class AdminSettingComponent implements OnInit {
 
-	showSetting = true;
-
-	constructor(private _adminLayoutService: AdminLayoutService) {
-		this._adminLayoutService.getToggleSetting().subscribe(show => {
-			this.showSetting = show
-		});
+	constructor() {
 	}
 
 	ngOnInit() {

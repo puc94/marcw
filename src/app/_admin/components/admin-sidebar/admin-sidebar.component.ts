@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AdminLayoutService } from '../../../_services';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-admin-sidebar',
@@ -7,15 +9,18 @@ import { AdminLayoutService } from '../../../_services';
   styleUrls: ['./admin-sidebar.component.sass']
 })
 export class AdminSidebarComponent implements OnInit {
+	route_uri: string
 
-	showSidebar = true;
-
-	constructor(private _adminLayoutService: AdminLayoutService) {
-		this._adminLayoutService.getToggleSidebar().subscribe(show => {
-			this.showSidebar = show
-		});
+	constructor(private router: Router) {
+		this.router.events.subscribe((res) => {
+			this.route_uri = this.router.url
+		})
 	}
 
 	ngOnInit() {
+	}
+
+	checkActive(uri) {
+		return this.route_uri.includes(uri)
 	}
 }
