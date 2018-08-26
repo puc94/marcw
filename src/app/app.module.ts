@@ -8,15 +8,13 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthGuard } from './_guards';
 import { ErrorInterceptor, JwtInterceptor } from './_helpers';
 import { AppComponent } from './app.component';
-import { AlertComponent } from './_directives';
 
 // Import routing module
 import { AppRoutingModule } from './app.routing';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    AlertComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,

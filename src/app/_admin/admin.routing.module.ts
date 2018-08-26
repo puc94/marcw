@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 // Load Layout
-import { LayoutComponent } from './layout/layout.component';
+import { AdminLayoutComponent } from './components/admin-layout/admin-layout.component';
 
 const routes: Routes = [
 	{
@@ -12,7 +12,7 @@ const routes: Routes = [
 	},
 	{
 		path: '',
-		component: LayoutComponent,
+		component: AdminLayoutComponent,
 		data: {
 			title: 'Admin'
 		},

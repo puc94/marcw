@@ -19,9 +19,9 @@ export class TaskEditComponent implements OnInit {
 	constructor(private route: ActivatedRoute, private router: Router, private _dataService: DataService) {
 		this.task = {id: "", todo: ""};
 		this._dataService.getAllTasks()
-      		.subscribe(res => {
-      			this.tasks = res['data'];
-      		});
+  		.subscribe(res => {
+  			this.tasks = res['data'];
+  		});
 	}
 
 	ngOnInit() {
@@ -36,11 +36,12 @@ export class TaskEditComponent implements OnInit {
 		var taskOptions = [];
 		this._dataService.getTask(id).subscribe((res) => {
 			this.task = res['data'];
-	    	this.tasks.forEach((task) => {
+			this.tasks.forEach((task) => {
 				if (task.id != this.task.id)
 					taskOptions.push({id: task.id, text: task.todo})
 			})
-			 this.taskOptions = Observable.create((obs) => {
+			
+			this.taskOptions = Observable.create((obs) => {
 	            obs.next(taskOptions);
 	            obs.complete();
 	        });

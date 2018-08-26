@@ -45,96 +45,6 @@ module.exports = webpackAsyncContext;
 
 /***/ }),
 
-/***/ "./src/app/_directives/alert/alert.component.html":
-/*!********************************************************!*\
-  !*** ./src/app/_directives/alert/alert.component.html ***!
-  \********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div *ngIf=\"message\" [ngClass]=\"{ 'alert': message, 'alert-success': message.type === 'success', 'alert-danger': message.type === 'error' }\">{{message.text}}</div>"
-
-/***/ }),
-
-/***/ "./src/app/_directives/alert/alert.component.sass":
-/*!********************************************************!*\
-  !*** ./src/app/_directives/alert/alert.component.sass ***!
-  \********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ""
-
-/***/ }),
-
-/***/ "./src/app/_directives/alert/alert.component.ts":
-/*!******************************************************!*\
-  !*** ./src/app/_directives/alert/alert.component.ts ***!
-  \******************************************************/
-/*! exports provided: AlertComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AlertComponent", function() { return AlertComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../_services */ "./src/app/_services/index.ts");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var AlertComponent = /** @class */ (function () {
-    function AlertComponent(alertService) {
-        this.alertService = alertService;
-    }
-    AlertComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.subscription = this.alertService.getMessage().subscribe(function (message) {
-            _this.message = message;
-        });
-    };
-    AlertComponent.prototype.ngOnDestroy = function () {
-        this.subscription.unsubscribe();
-    };
-    AlertComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'alert',
-            template: __webpack_require__(/*! ./alert.component.html */ "./src/app/_directives/alert/alert.component.html"),
-            styles: [__webpack_require__(/*! ./alert.component.sass */ "./src/app/_directives/alert/alert.component.sass")]
-        }),
-        __metadata("design:paramtypes", [_services__WEBPACK_IMPORTED_MODULE_1__["AlertService"]])
-    ], AlertComponent);
-    return AlertComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/_directives/index.ts":
-/*!**************************************!*\
-  !*** ./src/app/_directives/index.ts ***!
-  \**************************************/
-/*! exports provided: AlertComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _alert_alert_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./alert/alert.component */ "./src/app/_directives/alert/alert.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AlertComponent", function() { return _alert_alert_component__WEBPACK_IMPORTED_MODULE_0__["AlertComponent"]; });
-
-
-
-
-/***/ }),
-
 /***/ "./src/app/_guards/auth.guard.ts":
 /*!***************************************!*\
   !*** ./src/app/_guards/auth.guard.ts ***!
@@ -324,19 +234,18 @@ var JwtInterceptor = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/_services/alert.service.ts":
-/*!********************************************!*\
-  !*** ./src/app/_services/alert.service.ts ***!
-  \********************************************/
-/*! exports provided: AlertService */
+/***/ "./src/app/_services/admin-layout.service.ts":
+/*!***************************************************!*\
+  !*** ./src/app/_services/admin-layout.service.ts ***!
+  \***************************************************/
+/*! exports provided: AdminLayoutService */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AlertService", function() { return AlertService; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AdminLayoutService", function() { return AdminLayoutService; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var rxjs_Subject__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs/Subject */ "./node_modules/rxjs-compat/_esm5/Subject.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -348,42 +257,30 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
-
-var AlertService = /** @class */ (function () {
-    function AlertService(router) {
-        var _this = this;
-        this.router = router;
-        this.subject = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
-        this.keepAfterNavigationChange = false;
-        // clear alert message on route change
-        router.events.subscribe(function (event) {
-            if (event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_1__["NavigationStart"]) {
-                // only keep for a single location change
-                _this.keepAfterNavigationChange = false;
-            }
-            else {
-                _this.subject.next();
-            }
-        });
+var AdminLayoutService = /** @class */ (function () {
+    function AdminLayoutService() {
+        this.sidebarSubject = new rxjs_Subject__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
+        this.settingSubject = new rxjs_Subject__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
     }
-    AlertService.prototype.success = function (message, keepAfterNavigationChange) {
-        if (keepAfterNavigationChange === void 0) { keepAfterNavigationChange = false; }
-        this.keepAfterNavigationChange = keepAfterNavigationChange;
-        this.subject.next({ type: 'success', text: message });
+    AdminLayoutService.prototype.setToggleSidebar = function (show) {
+        this.sidebarSubject.next(show);
     };
-    AlertService.prototype.error = function (message, keepAfterNavigationChange) {
-        if (keepAfterNavigationChange === void 0) { keepAfterNavigationChange = false; }
-        this.keepAfterNavigationChange = keepAfterNavigationChange;
-        this.subject.next({ type: 'error', text: message });
+    AdminLayoutService.prototype.setToggleSetting = function (show) {
+        this.settingSubject.next(show);
     };
-    AlertService.prototype.getMessage = function () {
-        return this.subject.asObservable();
+    AdminLayoutService.prototype.getToggleSidebar = function () {
+        return this.sidebarSubject.asObservable();
     };
-    AlertService = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({ providedIn: 'root' }),
-        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
-    ], AlertService);
-    return AlertService;
+    AdminLayoutService.prototype.getToggleSetting = function () {
+        return this.settingSubject.asObservable();
+    };
+    AdminLayoutService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        }),
+        __metadata("design:paramtypes", [])
+    ], AdminLayoutService);
+    return AdminLayoutService;
 }());
 
 
@@ -544,7 +441,7 @@ var DataService = /** @class */ (function () {
 /*!************************************!*\
   !*** ./src/app/_services/index.ts ***!
   \************************************/
-/*! exports provided: DataService, UserService, AlertService, TOKEN_NAME, AuthenticationService */
+/*! exports provided: DataService, UserService, AdminLayoutService, TOKEN_NAME, AuthenticationService */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -555,8 +452,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./user.service */ "./src/app/_services/user.service.ts");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "UserService", function() { return _user_service__WEBPACK_IMPORTED_MODULE_1__["UserService"]; });
 
-/* harmony import */ var _alert_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./alert.service */ "./src/app/_services/alert.service.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AlertService", function() { return _alert_service__WEBPACK_IMPORTED_MODULE_2__["AlertService"]; });
+/* harmony import */ var _admin_layout_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./admin-layout.service */ "./src/app/_services/admin-layout.service.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AdminLayoutService", function() { return _admin_layout_service__WEBPACK_IMPORTED_MODULE_2__["AdminLayoutService"]; });
 
 /* harmony import */ var _authentication_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./authentication.service */ "./src/app/_services/authentication.service.ts");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TOKEN_NAME", function() { return _authentication_service__WEBPACK_IMPORTED_MODULE_3__["TOKEN_NAME"]; });
@@ -621,7 +518,7 @@ var UserService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n\t<div class=\"mt-4\">\r\n\t\t<alert></alert>\r\n\t</div>\r\n</div>\r\n<router-outlet></router-outlet>"
+module.exports = "<router-outlet></router-outlet>"
 
 /***/ }),
 
@@ -688,15 +585,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./_helpers */ "./src/app/_helpers/index.ts");
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _directives__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./_directives */ "./src/app/_directives/index.ts");
-/* harmony import */ var _app_routing__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./app.routing */ "./src/app/app.routing.ts");
+/* harmony import */ var _app_routing__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./app.routing */ "./src/app/app.routing.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-
 
 
 
@@ -712,15 +607,14 @@ var AppModule = /** @class */ (function () {
     AppModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"],
-                _directives__WEBPACK_IMPORTED_MODULE_7__["AlertComponent"]
+                _app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
                 _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_1__["BrowserAnimationsModule"],
                 _angular_http__WEBPACK_IMPORTED_MODULE_3__["HttpModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClientModule"],
-                _app_routing__WEBPACK_IMPORTED_MODULE_8__["AppRoutingModule"]
+                _app_routing__WEBPACK_IMPORTED_MODULE_7__["AppRoutingModule"]
             ],
             providers: [
                 { provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HTTP_INTERCEPTORS"], useClass: _helpers__WEBPACK_IMPORTED_MODULE_5__["JwtInterceptor"], multi: true },

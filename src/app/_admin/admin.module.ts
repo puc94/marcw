@@ -2,7 +2,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 // Import Layout
-import { LayoutComponent } from './layout/layout.component';
+import {
+  AdminLayoutComponent,
+  AdminNavbarComponent,
+  AdminSidebarComponent,
+  AdminBreadcrumbComponent,
+  AdminSettingComponent
+} from './components';
 
 // Admin Routing
 import { AdminRoutingModule } from './admin.routing.module';
@@ -13,7 +19,11 @@ import { AdminRoutingModule } from './admin.routing.module';
     AdminRoutingModule
   ],
   declarations: [
-  	LayoutComponent
+  	AdminLayoutComponent,
+  	AdminNavbarComponent,
+  	AdminSidebarComponent,
+  	AdminBreadcrumbComponent,
+  	AdminSettingComponent
   ]
 })
 export class AdminModule { }
