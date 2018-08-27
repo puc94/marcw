@@ -1,73 +1,50 @@
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-12 mt-3">
-			<a [routerLink]="['/admin/tasks/create']" class="btn btn-primary btn-lg">
-				Create
-			</a>
-			<!-- <table class="table mt-3">
-				<thead>
-					<tr>
-						<th>Todo</th>
-						<th>Parent</th>
-						<th>Action</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr *ngFor="let task of tasks">
-						<td>{{ task.todo }}</td>
-						<td>{{ task.parents | parentsTodo }}</td>
-						<td>
-							<a [routerLink]="['/admin/tasks/edit', task.id]" class="btn btn-success">EDIT</a>
-							<button class="btn btn-danger" type="button" (click)="deleteTask(task.id)">DELETE</button>
-						</td>
-					</tr>
-				</tbody>
-			</table> -->
-			<div class="row mt-3">
-				<div class="col-md-8">
-					<ngx-graph
-					  class="chart-container"
-					  [links]="graph.links"
-					  [nodes]="graph.nodes"
-					  [curve]="curve"
-					  (select)="selectNode($event)">
+<div class="page-content"></div>
+<div class="panel">
+</div>
+<div class="container-fluid graph-container">
+	<div class="row mt-3">
+		<div class="col-md-8">
+			<ngx-graph
+			  class="chart-container"
+			  [links]="graph.links"
+			  [nodes]="graph.nodes"
+			  [curve]="curve"
+			  (select)="selectNode($event)">
 
-					  <ng-template #defsTemplate>
-					    <svg:marker id="arrow" viewBox="0 -5 10 10" refX="8" refY="0" markerWidth="4" markerHeight="4" orient="auto">
-					      <svg:path d="M0,-5L10,0L0,5" class="arrow-head" />
-					    </svg:marker>
-					  </ng-template>
+			  <ng-template #defsTemplate>
+			    <svg:marker id="arrow" viewBox="0 -5 10 10" refX="8" refY="0" markerWidth="4" markerHeight="4" orient="auto">
+			      <svg:path d="M0,-5L10,0L0,5" class="arrow-head" />
+			    </svg:marker>
+			  </ng-template>
 
-					  <ng-template #nodeTemplate let-node>
-					    <svg:g class="node"
-					      ngx-tooltip
-					      [tooltipPlacement]="'top'"
-					      [tooltipType]="'tooltip'"
-					      [tooltipTitle]="node.label" [ngClass]="{'active': isActiveNode(node.id)}">
-					      <svg:rect [attr.width]="node.width" [attr.height]="node.height" [attr.fill]="'#fff'" />
-					      <svg:text alignment-baseline="central" [attr.x]="10" [attr.y]="node.height / 2" fill="#333">{{node.label}}</svg:text>
-					    </svg:g>
-					  </ng-template>
+			  <ng-template #nodeTemplate let-node>
+			    <svg:g class="node"
+			      ngx-tooltip
+			      [tooltipPlacement]="'top'"
+			      [tooltipType]="'tooltip'"
+			      [tooltipTitle]="node.label" [ngClass]="{'active': isActiveNode(node.id)}">
+			      <svg:rect [attr.width]="node.width" [attr.height]="node.height" [attr.fill]="'#fff'" />
+			      <svg:text alignment-baseline="central" [attr.x]="10" [attr.y]="node.height / 2" fill="#333">{{node.label}}</svg:text>
+			    </svg:g>
+			  </ng-template>
 
-					  <ng-template #linkTemplate let-link>
-					    <svg:g class="edge">
-					      <svg:path
-					        class="line"
-					        stroke-width="2"
-					        marker-end="url(#arrow)" >
-					      </svg:path>
-					    </svg:g>
-					  </ng-template>
-					</ngx-graph>
-				</div>
-				<div class="col-md-4">
-					<div class="edit-panel">
-						<button class="btn btn-danger" (click)="deleteTasks()"><i class="fa fa-trash"></i></button>
-						<button class="btn btn-warning text-white mt-2"><i class="fa fa-pencil"></i></button>
-						<button class="btn btn-info mt-2"><i class="fa fa-user"></i></button>
-						<input type="text" name="dependency" class="form-control mt-2" placeholder="Add dependency">
-					</div>
-				</div>
+			  <ng-template #linkTemplate let-link>
+			    <svg:g class="edge">
+			      <svg:path
+			        class="line"
+			        stroke-width="2"
+			        marker-end="url(#arrow)" >
+			      </svg:path>
+			    </svg:g>
+			  </ng-template>
+			</ngx-graph>
+		</div>
+		<div class="col-md-4">
+			<div class="edit-panel">
+				<button class="btn btn-danger" (click)="deleteTasks()"><i class="fa fa-trash"></i></button>
+				<button class="btn btn-warning text-white mt-2"><i class="fa fa-pencil"></i></button>
+				<button class="btn btn-info mt-2"><i class="fa fa-user"></i></button>
+				<input type="text" name="dependency" class="form-control mt-2" placeholder="Add dependency">
 			</div>
 		</div>
 	</div>

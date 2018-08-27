@@ -10,20 +10,20 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 const routes: Routes = [
 	{
 		path: '',
-		redirectTo: 'dashboard',
+		redirectTo: 'tasks',
 		pathMatch: 'full',
 	},
 	{
 		path: '',
 		component: AdminLayoutComponent,
 		children: [
-			{
-				path: 'dashboard',
-				component: DashboardComponent,
-				data: {
-					breadcrumb: 'Dashboard'
-				}
-			},
+			// {
+			// 	path: 'dashboard',
+			// 	component: DashboardComponent,
+			// 	data: {
+			// 		breadcrumb: 'Dashboard'
+			// 	}
+			// },
 			{
 				path: 'tasks',
 				loadChildren: './task/task.module#TaskModule',

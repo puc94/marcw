@@ -1,13 +1,4 @@
 <app-admin-navbar></app-admin-navbar>
-<div class="content" [ngClass]="{'open-sidebar': showSidebar, 'open-setting': showSetting}">
-	<div class="sidebar">
-		<app-admin-sidebar></app-admin-sidebar>
-	</div>
-	<div class="main">
-		<app-admin-breadcrumb></app-admin-breadcrumb>
-		<router-outlet></router-outlet>
-	</div>
-	<aside class="aside-menu">
-		<app-admin-setting></app-admin-setting>
-	</aside>
+<div class="content">
+	<router-outlet></router-outlet>
 </div>

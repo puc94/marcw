@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import * as shape from 'd3-shape';
 import { DataService } from '../../../_services';
 
+declare var wcDocker :any;
+declare var wcTabFrame :any;
+
 @Component({
   selector: 'app-task',
   templateUrl: './task.component.html',
@@ -34,6 +37,27 @@ export class TaskComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  ngAfterViewInit() {
+    var myDocker = new wcDocker($('.page-content'))
+    myDocker.registerPanelType('Panel1', {
+      // Use the simple layout for the entire panel.
+      layout: wcDocker.LAYOUT.SIMPLE,
+      title: false,
+      onCreate: function(myPanel) {
+
+        var $container = $('.panel');
+        myPanel.layout().addItem($container);
+
+        // Create a tab frame widget with a tab that uses a simple layout.
+        var tabFrame = new wcTabFrame($container, myPanel);
+        tabFrame.addTab('List', 0, wcDocker.LAYOUT.SIMPLE).addItem($('<div></div>'));
+        tabFrame.addTab('Graph', 0, wcDocker.LAYOUT.SIMPLE).addItem($('.graph-container'));
+      }
+    });
+
+    var panel1 = myDocker.addPanel('Panel1', wcDocker.DOCK.LEFT);
   }
 
   deleteTask(id) {

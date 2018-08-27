@@ -6,9 +6,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import {
   AdminLayoutComponent,
   AdminNavbarComponent,
-  AdminSidebarComponent,
   AdminBreadcrumbComponent,
-  AdminSettingComponent
 } from './components';
 
 // Admin Routing
@@ -24,9 +22,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
   declarations: [
   	AdminLayoutComponent,
   	AdminNavbarComponent,
-  	AdminSidebarComponent,
   	AdminBreadcrumbComponent,
-  	AdminSettingComponent,
   	DashboardComponent
   ]
 })

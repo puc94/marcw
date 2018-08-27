@@ -1690,9 +1690,7 @@ var AdminModule = /** @class */ (function () {
             declarations: [
                 _components__WEBPACK_IMPORTED_MODULE_3__["AdminLayoutComponent"],
                 _components__WEBPACK_IMPORTED_MODULE_3__["AdminNavbarComponent"],
-                _components__WEBPACK_IMPORTED_MODULE_3__["AdminSidebarComponent"],
                 _components__WEBPACK_IMPORTED_MODULE_3__["AdminBreadcrumbComponent"],
-                _components__WEBPACK_IMPORTED_MODULE_3__["AdminSettingComponent"],
                 _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_5__["DashboardComponent"]
             ]
         })
@@ -1717,7 +1715,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components */ "./src/app/_admin/components/index.ts");
-/* harmony import */ var _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./dashboard/dashboard.component */ "./src/app/_admin/dashboard/dashboard.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1728,25 +1725,23 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 // Load Layout
 
-// Load Dashboard
-
 var routes = [
     {
         path: '',
-        redirectTo: 'dashboard',
+        redirectTo: 'tasks',
         pathMatch: 'full',
     },
     {
         path: '',
         component: _components__WEBPACK_IMPORTED_MODULE_2__["AdminLayoutComponent"],
         children: [
-            {
-                path: 'dashboard',
-                component: _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_3__["DashboardComponent"],
-                data: {
-                    breadcrumb: 'Dashboard'
-                }
-            },
+            // {
+            // 	path: 'dashboard',
+            // 	component: DashboardComponent,
+            // 	data: {
+            // 		breadcrumb: 'Dashboard'
+            // 	}
+            // },
             {
                 path: 'tasks',
                 loadChildren: './task/task.module#TaskModule',
@@ -1895,7 +1890,7 @@ var AdminBreadcrumbComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-admin-navbar></app-admin-navbar>\r\n<div class=\"content\" [ngClass]=\"{'open-sidebar': showSidebar, 'open-setting': showSetting}\">\r\n\t<div class=\"sidebar\">\r\n\t\t<app-admin-sidebar></app-admin-sidebar>\r\n\t</div>\r\n\t<div class=\"main\">\r\n\t\t<app-admin-breadcrumb></app-admin-breadcrumb>\r\n\t\t<router-outlet></router-outlet>\r\n\t</div>\r\n\t<aside class=\"aside-menu\">\r\n\t\t<app-admin-setting></app-admin-setting>\r\n\t</aside>\r\n</div>"
+module.exports = "<app-admin-navbar></app-admin-navbar>\r\n<div class=\"content\">\r\n\t<router-outlet></router-outlet>\r\n</div>"
 
 /***/ }),
 
@@ -1906,7 +1901,7 @@ module.exports = "<app-admin-navbar></app-admin-navbar>\r\n<div class=\"content\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".content {\n  display: flex;\n  flex-direction: row;\n  flex-grow: 1;\n  overflow-x: hidden;\n  margin-top: 55px; }\n  .content .sidebar {\n    position: fixed;\n    width: 250px;\n    height: calc(100vh - 55px);\n    margin-left: -250px;\n    flex: 0 0 250px;\n    order: -1;\n    z-index: 1019;\n    color: #fff;\n    background: #2f353a;\n    transition: margin-left .25s,margin-right .25s,width .25s,flex .25s; }\n  .content .aside-menu {\n    position: fixed;\n    width: 250px;\n    height: calc(100vh - 55px);\n    margin-right: -250px;\n    right: 0;\n    flex: 0 0 250px;\n    order: -1;\n    z-index: 1019;\n    background: #fff;\n    border-left: 1px solid #c8ced3;\n    transition: margin-left .25s,margin-right .25s,width .25s,flex .25s; }\n  .content .main {\n    flex: 1;\n    min-width: 0;\n    transition: margin-left .25s,margin-right .25s,width .25s,flex .25s; }\n  .content.open-sidebar .sidebar {\n    margin-left: 0; }\n  .content.open-sidebar .main {\n    margin-left: 250px; }\n  .content.open-setting .aside-menu {\n    margin-right: 0; }\n  .content.open-setting .main {\n    margin-right: 250px; }\n"
+module.exports = ".content {\n  margin-top: 55px; }\n"
 
 /***/ }),
 
@@ -1921,7 +1916,6 @@ module.exports = ".content {\n  display: flex;\n  flex-direction: row;\n  flex-g
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AdminLayoutComponent", function() { return AdminLayoutComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../_services */ "./src/app/_services/index.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1932,19 +1926,8 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-
 var AdminLayoutComponent = /** @class */ (function () {
-    function AdminLayoutComponent(_adminLayoutService) {
-        var _this = this;
-        this._adminLayoutService = _adminLayoutService;
-        this.showSidebar = true;
-        this.showSetting = false;
-        this._adminLayoutService.getToggleSidebar().subscribe(function (show) {
-            _this.showSidebar = show;
-        });
-        this._adminLayoutService.getToggleSetting().subscribe(function (show) {
-            _this.showSetting = show;
-        });
+    function AdminLayoutComponent() {
     }
     AdminLayoutComponent.prototype.ngOnInit = function () {
     };
@@ -1956,7 +1939,7 @@ var AdminLayoutComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./admin-layout.component.html */ "./src/app/_admin/components/admin-layout/admin-layout.component.html"),
             styles: [__webpack_require__(/*! ./admin-layout.component.sass */ "./src/app/_admin/components/admin-layout/admin-layout.component.sass")]
         }),
-        __metadata("design:paramtypes", [_services__WEBPACK_IMPORTED_MODULE_1__["AdminLayoutService"]])
+        __metadata("design:paramtypes", [])
     ], AdminLayoutComponent);
     return AdminLayoutComponent;
 }());
@@ -1972,7 +1955,7 @@ var AdminLayoutComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-light\">\r\n\t<a class=\"navbar-brand d-none d-md-inline-flex\" href=\"#\">Navbar</a>\r\n\t<button class=\"navbar-toggler border-0\" (click)=\"toggleSidebar()\" type=\"button\" aria-expanded=\"false\" aria-label=\"Toggle Sidebar\">\r\n\t\t<i class=\"fa fa-bars\"></i>\r\n\t</button>\r\n\t<a class=\"navbar-brand d-inline-flex d-md-none\" href=\"#\">Navbar</a>\r\n\t<ul class=\"nav navbar-nav ml-auto\">\r\n\t\t<li class=\"nav-item drodown\" dropdown placement=\"bottom right\">\r\n\t\t\t<a class=\"nav-link\" data-toggle=\"dropdown\" href=\"#\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\" dropdownToggle (click)=\"false\">\r\n\t\t\t\t<img src=\"assets/img/avatar.jpg\" class=\"rounded-circle\" width=\"35\">\r\n\t\t\t</a>\r\n\t\t\t<div class=\"dropdown-menu dropdown-menu-right\" *dropdownMenu aria-labelledby=\"simple-dropdown\">\r\n\t\t\t\t<a class=\"dropdown-item\" href=\"#\" (click)=\"logout()\"><i class=\"fa fa-lock\"></i> Logout</a>\r\n\t\t\t</div>\r\n\t\t</li>\r\n\t</ul>\r\n\t<button class=\"navbar-toggler border-0\" (click)=\"toggleSetting()\" type=\"button\" aria-expanded=\"false\" aria-label=\"Toggle Setting\">\r\n\t\t<i class=\"fa fa-bars\"></i>\r\n\t</button>\r\n</nav>"
+module.exports = "<nav class=\"navbar navbar-light\">\r\n\t<a class=\"navbar-brand d-none d-md-inline-flex\" href=\"#\">Navbar</a>\r\n\t<a class=\"navbar-brand d-inline-flex d-md-none\" href=\"#\">Navbar</a>\r\n\t<ul class=\"nav navbar-nav ml-auto\">\r\n\t\t<li class=\"nav-item drodown\" dropdown placement=\"bottom right\">\r\n\t\t\t<a class=\"nav-link\" data-toggle=\"dropdown\" href=\"#\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\" dropdownToggle (click)=\"false\">\r\n\t\t\t\t<img src=\"assets/img/avatar.jpg\" class=\"rounded-circle\" width=\"35\">\r\n\t\t\t</a>\r\n\t\t\t<div class=\"dropdown-menu dropdown-menu-right\" *dropdownMenu aria-labelledby=\"simple-dropdown\">\r\n\t\t\t\t<a class=\"dropdown-item\" href=\"#\" (click)=\"logout()\"><i class=\"fa fa-lock\"></i> Logout</a>\r\n\t\t\t</div>\r\n\t\t</li>\r\n\t</ul>\r\n</nav>"
 
 /***/ }),
 
@@ -1999,153 +1982,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TOKEN_NAME", function() { return TOKEN_NAME; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AdminNavbarComponent", function() { return AdminNavbarComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../_services */ "./src/app/_services/index.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var TOKEN_NAME = 'current_user';
-var AdminNavbarComponent = /** @class */ (function () {
-    function AdminNavbarComponent(_adminLayoutService, router) {
-        this._adminLayoutService = _adminLayoutService;
-        this.router = router;
-        this.showSidebar = true;
-        this.showSetting = false;
-    }
-    AdminNavbarComponent.prototype.ngOnInit = function () {
-    };
-    AdminNavbarComponent.prototype.toggleSidebar = function () {
-        this.showSidebar = !this.showSidebar;
-        this._adminLayoutService.setToggleSidebar(this.showSidebar);
-    };
-    AdminNavbarComponent.prototype.toggleSetting = function () {
-        this.showSetting = !this.showSetting;
-        this._adminLayoutService.setToggleSetting(this.showSetting);
-    };
-    AdminNavbarComponent.prototype.logout = function () {
-        localStorage.removeItem(TOKEN_NAME);
-        this.router.navigate(['/']);
-    };
-    AdminNavbarComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-admin-navbar',
-            template: __webpack_require__(/*! ./admin-navbar.component.html */ "./src/app/_admin/components/admin-navbar/admin-navbar.component.html"),
-            styles: [__webpack_require__(/*! ./admin-navbar.component.sass */ "./src/app/_admin/components/admin-navbar/admin-navbar.component.sass")]
-        }),
-        __metadata("design:paramtypes", [_services__WEBPACK_IMPORTED_MODULE_1__["AdminLayoutService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
-    ], AdminNavbarComponent);
-    return AdminNavbarComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/_admin/components/admin-setting/admin-setting.component.html":
-/*!******************************************************************************!*\
-  !*** ./src/app/_admin/components/admin-setting/admin-setting.component.html ***!
-  \******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "Aside menu"
-
-/***/ }),
-
-/***/ "./src/app/_admin/components/admin-setting/admin-setting.component.sass":
-/*!******************************************************************************!*\
-  !*** ./src/app/_admin/components/admin-setting/admin-setting.component.sass ***!
-  \******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ""
-
-/***/ }),
-
-/***/ "./src/app/_admin/components/admin-setting/admin-setting.component.ts":
-/*!****************************************************************************!*\
-  !*** ./src/app/_admin/components/admin-setting/admin-setting.component.ts ***!
-  \****************************************************************************/
-/*! exports provided: AdminSettingComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AdminSettingComponent", function() { return AdminSettingComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var AdminSettingComponent = /** @class */ (function () {
-    function AdminSettingComponent() {
-    }
-    AdminSettingComponent.prototype.ngOnInit = function () {
-    };
-    AdminSettingComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-admin-setting',
-            template: __webpack_require__(/*! ./admin-setting.component.html */ "./src/app/_admin/components/admin-setting/admin-setting.component.html"),
-            styles: [__webpack_require__(/*! ./admin-setting.component.sass */ "./src/app/_admin/components/admin-setting/admin-setting.component.sass")]
-        }),
-        __metadata("design:paramtypes", [])
-    ], AdminSettingComponent);
-    return AdminSettingComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/_admin/components/admin-sidebar/admin-sidebar.component.html":
-/*!******************************************************************************!*\
-  !*** ./src/app/_admin/components/admin-sidebar/admin-sidebar.component.html ***!
-  \******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<ul class=\"nav\">\r\n\t<li class=\"nav-item\">\r\n\t\t<a [routerLink]=\"['/admin/dashboard']\" class=\"nav-link\" [ngClass]=\"{'active': checkActive('dashboard')}\">\r\n\t\t\t<i class=\"fa fa-dashboard\"></i>\r\n\t\t\t<span>Dashboard</span>\r\n\t\t</a>\r\n\t</li>\r\n\t<li class=\"nav-item\">\r\n\t\t<a [routerLink]=\"['/admin/tasks']\" class=\"nav-link\" [ngClass]=\"{'active': checkActive('tasks')}\">\r\n\t\t\t<i class=\"fa fa-map\"></i>\r\n\t\t\t<span>Task</span>\r\n\t\t</a>\r\n\t</li>\r\n</ul>"
-
-/***/ }),
-
-/***/ "./src/app/_admin/components/admin-sidebar/admin-sidebar.component.sass":
-/*!******************************************************************************!*\
-  !*** ./src/app/_admin/components/admin-sidebar/admin-sidebar.component.sass ***!
-  \******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ".nav {\n  flex-direction: column;\n  min-height: 100%;\n  padding: 0; }\n  .nav .nav-item {\n    position: relative;\n    margin: 0;\n    transition: background .3s ease-in-out; }\n  .nav .nav-item .nav-link {\n      display: block;\n      padding: .75rem 1rem;\n      color: #fff;\n      text-decoration: none;\n      background: 0 0;\n      transition: .3s; }\n  .nav .nav-item .nav-link i {\n        display: inline-block;\n        width: 1rem;\n        margin: 0 .5rem 0 0;\n        font-size: .875rem;\n        color: #73818f;\n        text-align: center;\n        transition: .3s; }\n  .nav .nav-item .nav-link.active {\n        color: #fff;\n        background: #3a4248; }\n  .nav .nav-item .nav-link.active i {\n          color: #20a8d8; }\n  .nav .nav-item .nav-link:hover {\n        color: #fff;\n        background: #20a8d8; }\n  .nav .nav-item .nav-link:hover i {\n          color: #fff; }\n"
-
-/***/ }),
-
-/***/ "./src/app/_admin/components/admin-sidebar/admin-sidebar.component.ts":
-/*!****************************************************************************!*\
-  !*** ./src/app/_admin/components/admin-sidebar/admin-sidebar.component.ts ***!
-  \****************************************************************************/
-/*! exports provided: AdminSidebarComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AdminSidebarComponent", function() { return AdminSidebarComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2158,28 +1994,26 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
-var AdminSidebarComponent = /** @class */ (function () {
-    function AdminSidebarComponent(router) {
-        var _this = this;
+var TOKEN_NAME = 'current_user';
+var AdminNavbarComponent = /** @class */ (function () {
+    function AdminNavbarComponent(router) {
         this.router = router;
-        this.router.events.subscribe(function (res) {
-            _this.route_uri = _this.router.url;
-        });
     }
-    AdminSidebarComponent.prototype.ngOnInit = function () {
+    AdminNavbarComponent.prototype.ngOnInit = function () {
     };
-    AdminSidebarComponent.prototype.checkActive = function (uri) {
-        return this.route_uri.includes(uri);
+    AdminNavbarComponent.prototype.logout = function () {
+        localStorage.removeItem(TOKEN_NAME);
+        this.router.navigate(['/']);
     };
-    AdminSidebarComponent = __decorate([
+    AdminNavbarComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-admin-sidebar',
-            template: __webpack_require__(/*! ./admin-sidebar.component.html */ "./src/app/_admin/components/admin-sidebar/admin-sidebar.component.html"),
-            styles: [__webpack_require__(/*! ./admin-sidebar.component.sass */ "./src/app/_admin/components/admin-sidebar/admin-sidebar.component.sass")]
+            selector: 'app-admin-navbar',
+            template: __webpack_require__(/*! ./admin-navbar.component.html */ "./src/app/_admin/components/admin-navbar/admin-navbar.component.html"),
+            styles: [__webpack_require__(/*! ./admin-navbar.component.sass */ "./src/app/_admin/components/admin-navbar/admin-navbar.component.sass")]
         }),
         __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
-    ], AdminSidebarComponent);
-    return AdminSidebarComponent;
+    ], AdminNavbarComponent);
+    return AdminNavbarComponent;
 }());
 
 
@@ -2190,7 +2024,7 @@ var AdminSidebarComponent = /** @class */ (function () {
 /*!********************************************!*\
   !*** ./src/app/_admin/components/index.ts ***!
   \********************************************/
-/*! exports provided: AdminLayoutComponent, TOKEN_NAME, AdminNavbarComponent, AdminSidebarComponent, AdminBreadcrumbComponent, AdminSettingComponent */
+/*! exports provided: AdminLayoutComponent, TOKEN_NAME, AdminNavbarComponent, AdminBreadcrumbComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2203,16 +2037,8 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AdminNavbarComponent", function() { return _admin_navbar_admin_navbar_component__WEBPACK_IMPORTED_MODULE_1__["AdminNavbarComponent"]; });
 
-/* harmony import */ var _admin_sidebar_admin_sidebar_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./admin-sidebar/admin-sidebar.component */ "./src/app/_admin/components/admin-sidebar/admin-sidebar.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AdminSidebarComponent", function() { return _admin_sidebar_admin_sidebar_component__WEBPACK_IMPORTED_MODULE_2__["AdminSidebarComponent"]; });
-
-/* harmony import */ var _admin_breadcrumb_admin_breadcrumb_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./admin-breadcrumb/admin-breadcrumb.component */ "./src/app/_admin/components/admin-breadcrumb/admin-breadcrumb.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AdminBreadcrumbComponent", function() { return _admin_breadcrumb_admin_breadcrumb_component__WEBPACK_IMPORTED_MODULE_3__["AdminBreadcrumbComponent"]; });
-
-/* harmony import */ var _admin_setting_admin_setting_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./admin-setting/admin-setting.component */ "./src/app/_admin/components/admin-setting/admin-setting.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AdminSettingComponent", function() { return _admin_setting_admin_setting_component__WEBPACK_IMPORTED_MODULE_4__["AdminSettingComponent"]; });
-
-
+/* harmony import */ var _admin_breadcrumb_admin_breadcrumb_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./admin-breadcrumb/admin-breadcrumb.component */ "./src/app/_admin/components/admin-breadcrumb/admin-breadcrumb.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AdminBreadcrumbComponent", function() { return _admin_breadcrumb_admin_breadcrumb_component__WEBPACK_IMPORTED_MODULE_2__["AdminBreadcrumbComponent"]; });
 
 
 
