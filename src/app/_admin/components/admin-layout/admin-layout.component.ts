@@ -8,8 +8,8 @@ import { AdminLayoutService } from '../../../_services';
 })
 export class AdminLayoutComponent implements OnInit {
 
-	showSidebar: boolean
-	showSetting: boolean
+	showSidebar: boolean;
+	showSetting: boolean;
 
 	constructor(private _adminLayoutService: AdminLayoutService) {
 		this.showSidebar = true
@@ -25,4 +25,6 @@ export class AdminLayoutComponent implements OnInit {
 	ngOnInit() {
 	}
 
+	ngAfterViewInit() {
+	}
 }
