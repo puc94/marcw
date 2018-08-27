@@ -61,7 +61,11 @@
 					</ngx-graph>
 				</div>
 				<div class="col-md-4">
-					<div class="">
+					<div class="edit-panel">
+						<button class="btn btn-danger" (click)="deleteTasks()"><i class="fa fa-trash"></i></button>
+						<button class="btn btn-warning text-white mt-2"><i class="fa fa-pencil"></i></button>
+						<button class="btn btn-info mt-2"><i class="fa fa-user"></i></button>
+						<input type="text" name="dependency" class="form-control mt-2" placeholder="Add dependency">
 					</div>
 				</div>
 			</div>

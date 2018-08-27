@@ -15,10 +15,10 @@ export class TaskComponent implements OnInit {
 
   graph = { nodes: [], links: [] }
 
-  selectedNode: Array<number>;
+  selectedNodes: Array<number>;
 
   constructor(private _dataService: DataService) {
-    this.selectedNode = [];
+    this.selectedNodes = [];
     this._dataService.getTasks()
       .subscribe(res => {
         this.tasks = res['data']
@@ -49,13 +49,13 @@ export class TaskComponent implements OnInit {
   }
 
   selectNode(e) {
-    // if (this.isActiveNode(e.id))
-    //   this.selectedNodes.splice(this.selectedNodes.indexOf(e.id), 1)
-    // else
-      this.selectedNode = e.id
+    if (this.isActiveNode(e.id))
+      this.selectedNodes.splice(this.selectedNodes.indexOf(e.id), 1)
+    else
+      this.selectedNodes.push(e.id)
   }
 
   isActiveNode(id) {
-    return this.selectedNode == id
+    return this.selectedNodes.includes(id)
   }
 }
