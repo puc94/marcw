@@ -15,8 +15,10 @@ export class TaskComponent implements OnInit {
 
   graph = { nodes: [], links: [] }
 
-  constructor(private _dataService: DataService) {
+  selectedNode: Array<number>;
 
+  constructor(private _dataService: DataService) {
+    this.selectedNode = [];
     this._dataService.getTasks()
       .subscribe(res => {
         this.tasks = res['data']
@@ -44,5 +46,16 @@ export class TaskComponent implements OnInit {
     }, (err) => {
       console.log(err);
     });
+  }
+
+  selectNode(e) {
+    // if (this.isActiveNode(e.id))
+    //   this.selectedNodes.splice(this.selectedNodes.indexOf(e.id), 1)
+    // else
+      this.selectedNode = e.id
+  }
+
+  isActiveNode(id) {
+    return this.selectedNode == id
   }
 }
