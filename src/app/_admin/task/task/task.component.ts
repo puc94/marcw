@@ -41,23 +41,36 @@ export class TaskComponent implements OnInit {
 
   ngAfterViewInit() {
     var myDocker = new wcDocker($('.page-content'))
-    myDocker.registerPanelType('Panel1', {
+    myDocker.registerPanelType('Graph Panel', {
       // Use the simple layout for the entire panel.
-      layout: wcDocker.LAYOUT.SIMPLE,
-      title: false,
+      faicon: 'gears',
+      title: 'Graph',
       onCreate: function(myPanel) {
-
-        var $container = $('.panel');
-        myPanel.layout().addItem($container);
-
-        // Create a tab frame widget with a tab that uses a simple layout.
-        var tabFrame = new wcTabFrame($container, myPanel);
-        tabFrame.addTab('List', 0, wcDocker.LAYOUT.SIMPLE).addItem($('<div></div>'));
-        tabFrame.addTab('Graph', 0, wcDocker.LAYOUT.SIMPLE).addItem($('.graph-container'));
+        myPanel.initSize(500, 300);
+        myPanel.layout().scene().css('padding', '10px');
+        myPanel.layout().addItem('.graph-container').stretch('', '100%');
       }
     });
 
-    var panel1 = myDocker.addPanel('Panel1', wcDocker.DOCK.LEFT);
+    myDocker.registerPanelType('List Panel', {
+      // Use the simple layout for the entire panel.
+      faicon: 'cubes',
+      title: 'List',
+      onCreate: function(myPanel) {
+        myPanel.initSize(500, 300);
+        myPanel.layout().scene().css('padding', '10px');
+        myPanel.layout().addItem('<div>', 0, 2).stretch('', '100%');
+      }
+    });
+
+    myDocker.startLoading('Loading...');
+
+    var graph_panel = myDocker.addPanel('Graph Panel', wcDocker.DOCK.TOP, null, { h: '200px' });
+    myDocker.addPanel('List Panel', wcDocker.DOCK.STACKED, graph_panel, { h: '200px' });
+
+    myDocker.on(wcDocker.EVENT.LOADED, function() {
+      myDocker.finishLoading(500);
+    });
   }
 
   deleteTask(id) {
