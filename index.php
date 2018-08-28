@@ -12,7 +12,7 @@ $server = new React\Http\Server(function (Psr\Http\Message\ServerRequestInterfac
     );
 });
 
-$socket = new React\Socket\Server(7000, $loop);
+$socket = new React\Socket\Server('mawercer.de:7000', $loop);
 $server->listen($socket);
 
 $loop->run();
